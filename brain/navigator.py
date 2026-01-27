@@ -64,7 +64,6 @@ class Navigator:
         current_x, current_y = self.pos
         target_x, target_y = target_node
 
-        # 1. Determine Target Direction
         dx = target_x - current_x
         dy = target_y - current_y
 
@@ -76,26 +75,26 @@ class Navigator:
         turns = self._get_turns_needed(self.facing, target_facing)
         for direction in turns:
             duration = self.hal.turn(direction)
-            # Update internal state immediately
+            self.sleep((duration / 1000.0) + self.settle_time)
+            self.sleep(self.settle_time)
+
             if direction == "RIGHT":
                 self.facing = (self.facing + 1) % 4
             else:
                 self.facing = (self.facing - 1) % 4
 
-            # Wait for physical move
-            self.sleep((duration / 1000.0) + self.settle_time)
-
-        # 3. Drive Forward
+        # 3. Drive Forward (Строго ОДИН раз после всех поворотов)
         duration = self.hal.drive_forward()
-
-        # Update internal state
         self.pos = [target_x, target_y]
 
-        # Wait for physical move
+        # Аналогично: суммарный сон и проверочный для settle_time
         self.sleep((duration / 1000.0) + self.settle_time)
+        self.sleep(self.settle_time)
 
-    def _vector_to_facing(self, dx, dy):
-        """Converts a relative vector to a cardinal direction int."""
+    def _vector_to_facing(self, dx, dy=None):
+        if dy is None and isinstance(dx, tuple):
+            dx, dy = dx
+
         if dx == 0 and dy == -1:
             return DIR_N
         if dx == 1 and dy == 0:

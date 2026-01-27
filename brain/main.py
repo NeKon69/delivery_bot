@@ -24,7 +24,7 @@ def load_json_file(path):
         sys.exit(1)
 
     try:
-        with open(path, "r") as f:
+        with open(path, "r", encoding="utf-8") as f:
             data = json.load(f)
             print(f"[BOOT] Loaded {path}")
             return data

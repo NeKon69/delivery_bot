@@ -1,6 +1,5 @@
 import heapq
 import json
-import math
 
 
 class Pathfinder:
@@ -18,7 +17,7 @@ class Pathfinder:
 
     def load_map(self, path):
         try:
-            with open(path, "r") as f:
+            with open(path, "r", encoding="utf-8") as f:
                 self.grid = json.load(f)
                 self.height = len(self.grid)
                 self.width = len(self.grid[0]) if self.height > 0 else 0
@@ -45,11 +44,12 @@ class Pathfinder:
 
         for dx, dy in directions:
             nx, ny = x + dx, y + dy
-            # Check bounds
-            if 0 <= nx < self.width and 0 <= ny < self.height:
-                # Check walls (0 = Walkable, 1 = Wall)
-                if self.grid[ny][nx] == 0:
-                    results.append((nx, ny))
+            # Проверяем высоту
+            if 0 <= ny < len(self.grid):
+                # Проверяем ширину конкретной строки (ny)
+                if 0 <= nx < len(self.grid[ny]):
+                    if self.grid[ny][nx] == 0:
+                        results.append((nx, ny))
         return results
 
     def find_path(self, start, end):
@@ -59,8 +59,16 @@ class Pathfinder:
         :param end: Tuple (x, y)
         :return: List of tuples [(x, y), ...] or None if no path.
         """
+        if not self.is_walkable(start):
+            print(f"[PATH] Start {start} is invalid/wall.")
+            return None
+
         if not self.is_walkable(end):
             print(f"[PATH] Destination {end} is a wall/out of bounds.")
+            return None
+
+        if not self.is_walkable(start) or not self.is_walkable(end):
+            print(f"[PATH] Start {start} or End {end} is invalid.")
             return None
 
         # Priority Queue: (priority, current_node, last_direction)
@@ -119,6 +127,6 @@ class Pathfinder:
 
     def is_walkable(self, node):
         (x, y) = node
-        if 0 <= x < self.width and 0 <= y < self.height:
+        if 0 <= y < len(self.grid) and 0 <= x < len(self.grid[y]):
             return self.grid[y][x] == 0
         return False

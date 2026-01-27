@@ -1,4 +1,3 @@
-import math
 
 
 class RobotHAL:
@@ -26,7 +25,7 @@ class RobotHAL:
         Adjusts timing based on battery voltage scalar.
         Returns: int
         """
-        return int(base_duration_ms * self.scalar)
+        return int(round(base_duration_ms * self.scalar))
 
     def drive_forward(self):
         """
@@ -75,7 +74,7 @@ class RobotHAL:
         if self.serial:
             self.serial.send("LCD", "CLS", "0")
             self.serial.send("LCD", "0", l1)
-            if l2:
+            if l2 is not None:
                 self.serial.send("LCD", "1", l2)
 
     def update_voltage_scalar(self, new_scalar):

@@ -1,0 +1,18 @@
+# Auto-generated from template: python_generic.toml
+
+[run]
+# Пытаемся использовать python из venv, если он есть, иначе системный
+cmd = "([ -f venv/bin/python ] && venv/bin/python main.py) || ([ -f .venv/bin/python ] && .venv/bin/python main.py) || python3 main.py"
+
+[test]
+cmd = "pytest"
+
+[lint]
+cmd = "ruff check ."
+
+[format]
+cmd = "ruff format ."
+
+[deps]
+cmd = "pip install -r requirements.txt"
+
