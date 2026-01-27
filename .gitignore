@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+.env
+
+# VS Code / IDEs
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+
+# Arduino / C++ Compilation
+.pio/
+firmware/*.hex
+firmware/*.elf
+
+# Testing
+.coverage
+htmlcov/
+.nvim/

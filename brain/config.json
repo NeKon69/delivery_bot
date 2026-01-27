@@ -1,0 +1,18 @@
+{
+    "serial": {
+        "port": "/dev/ttyUSB0",
+        "baud_rate": 115200,
+        "timeout": 1
+    },
+    "calibration": {
+        "voltage_scalar": 1.0,
+        "time_move_1_grid_ms": 1500,
+        "time_turn_90_ms": 850,
+        "motor_pwm_max": 200,
+        "soft_start_duration_ms": 300
+    },
+    "timeouts": {
+        "delivery_wait_s": 45,
+        "input_idle_reset_s": 60
+    }
+}

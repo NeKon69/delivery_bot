@@ -1,0 +1,31 @@
+{
+    "101": {
+        "owner_name": "Alice (Room 101)",
+        "rfid_uid": "A1-B2-C3-D4",
+        "coords": [
+            7,
+            3
+        ]
+    },
+    "102": {
+        "owner_name": "Bob (Room 102)",
+        "rfid_uid": "E5-F6-G7-H8",
+        "coords": [
+            2,
+            6
+        ]
+    },
+    "103": {
+        "owner_name": "Charlie (Room 103)",
+        "rfid_uid": "11-22-33-44",
+        "coords": [
+            8,
+            6
+        ]
+    },
+    "ADMIN": {
+        "owner_name": "Super User",
+        "rfid_uid": "99-88-77-66",
+        "role": "admin"
+    }
+}
