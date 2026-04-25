@@ -1,0 +1,27 @@
+{
+  "transport": {
+    "kind": "jsonl",
+    "line_ending": "\n"
+  },
+  "commands": [
+    "ping",
+    "get_state",
+    "lcd_clear",
+    "lcd_backlight",
+    "lcd_set",
+    "lcd_set_line",
+    "servo_open",
+    "servo_close",
+    "servo_set_angle",
+    "move",
+    "stop"
+  ],
+  "events": [
+    "ready",
+    "state",
+    "key_event",
+    "switch_state",
+    "rfid_scan",
+    "motion_done"
+  ]
+}

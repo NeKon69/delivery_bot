@@ -1,0 +1,19 @@
+{
+  "cabinet_locations": {
+    "1": {
+      "x": 6,
+      "y": 1,
+      "heading": "W"
+    },
+    "2": {
+      "x": 6,
+      "y": 3,
+      "heading": "W"
+    },
+    "3": {
+      "x": 6,
+      "y": 5,
+      "heading": "W"
+    }
+  }
+}

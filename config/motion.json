@@ -1,0 +1,30 @@
+{
+  "serial": {
+    "baud": 115200,
+    "wait_ms": 3000
+  },
+  "drive": {
+    "right": {
+      "dir_pin": 4,
+      "pwm_pin": 5,
+      "forward_dir": 0,
+      "reverse_dir": 1
+    },
+    "left": {
+      "dir_pin": 7,
+      "pwm_pin": 6,
+      "forward_dir": 0,
+      "reverse_dir": 1
+    },
+    "pwm": {
+      "forward": 110,
+      "turn": 120
+    },
+    "timing_ms": {
+      "forward_cell": 900,
+      "reverse_cell": 900,
+      "turn_left": 500,
+      "turn_right": 500
+    }
+  }
+}
